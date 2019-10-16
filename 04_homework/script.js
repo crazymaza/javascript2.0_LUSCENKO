@@ -33,9 +33,9 @@
     const res1 = document.querySelector('.result1');
 
     btn1.onclick = () => {
-        if(inp1.value > inp2.value) {
+        if(+inp1.value > +inp2.value) {
             res1.innerHTML = inp1.value + " is greater than " + inp2.value;
-        } else if(inp1.value < inp2.value) {
+        } else if(+inp1.value < +inp2.value) {
             res1.innerHTML = inp1.value + " is less then " + inp2.value;
         } else {
             res1.innerHTML = inp1.value + " equal " + inp2.value;
@@ -153,11 +153,11 @@
     const res9 = document.querySelector('.result9');
 
     inp12.onchange = () => {
-        if (inp12.value >= 1 && inp12.value <= 5) {
+        if (+inp12.value >= 1 && +inp12.value <= 5) {
             res9.innerHTML = "Этот дом стоит на улице 1.";
-        } else if (inp12.value >= 6 && inp12.value <= 11) {
+        } else if (+inp12.value >= 6 && +inp12.value <= 11) {
             res9.innerHTML = "Этот дом стоит на улице 2.";
-        } else if (inp12.value >= 11 && inp12.value <= 20) {
+        } else if (+inp12.value >= 11 && +inp12.value <= 20) {
             res9.innerHTML = "Этот дом стоит на улице 3.";
         } else {
             res9.innerHTML = "В этом городе нет таких домов.";
@@ -169,19 +169,19 @@
     const res10 = document.querySelector('.result10');
 
     inp13.onchange = () => {
-        if(inp13.value >= 0 && inp14.value <= 25) {
+        if(+inp13.value >= 0 && +inp14.value <= 25) {
             res10.innerHTML = "не обнаруживается.";
-        } else if(inp13.value >= 26 && inp14.value <= 50) {
+        } else if(+inp13.value >= 26 && +inp14.value <= 50) {
             res10.innerHTML = "снижение числа лимфоцитов.";
-        } else if(inp13.value >= 51 && inp14.value <= 100) {
+        } else if(+inp13.value >= 51 && +inp14.value <= 100) {
             res10.innerHTML = "вялость, рвота.";
-        } else if(inp13.value >= 101 && inp14.value <= 150) {
+        } else if(+inp13.value >= 101 && +inp14.value <= 150) {
             res10.innerHTML = "смертность 5%.";
-        } else if(inp13.value >= 151 && inp14.value <= 350) {
+        } else if(+inp13.value >= 151 && +inp14.value <= 350) {
             res10.innerHTML = "смертность 50% за 30 суток.";
-        } else if(inp13.value >= 351 && inp14.value <= 600) {
+        } else if(+inp13.value >= 351 && +inp14.value <= 600) {
             res10.innerHTML = "90% смертность за 2 недели.";
-        } else if(inp13.value > 600) {
+        } else if(+inp13.value > 600) {
             res10.innerHTML = "смертность 100%.";
         } 
     };
@@ -198,17 +198,17 @@
     const res11 = document.querySelector('.result11');
 
     inp14.onchange = () => {
-        if(inp14.value >= 0 && inp14.value <= 499) {
+        if(+inp14.value >= 0 && +inp14.value <= 499) {
             res11.innerHTML = "Налог: 2525 тенге";
-        } else if(inp14.value >= 500 && inp14.value <= 1199) {
+        } else if(+inp14.value >= 500 && +inp14.value <= 1199) {
             res11.innerHTML = "Налог: 5050 тенге";
-        } else if(inp14.value >= 1200 && inp14.value <= 1599) {
+        } else if(+inp14.value >= 1200 && +inp14.value <= 1599) {
             res11.innerHTML = "Налог: 8275 тенге";
-        } else if(inp14.value >= 1600 && inp14.value <= 1899) {
+        } else if(+inp14.value >= 1600 && +inp14.value <= 1899) {
             res11.innerHTML = "Налог: 9675 тенге";
-        } else if(inp14.value >= 1900 && inp14.value <= 1999) {
+        } else if(+inp14.value >= 1900 && +inp14.value <= 1999) {
             res11.innerHTML = "Налог: 11075тенге";
-        } else if(inp14.value > 2000) {
+        } else if(+inp14.value > 2000) {
             res11.innerHTML = "Налог: 15000 тенге";
         } 
     };
@@ -221,11 +221,11 @@
 
     btn9.onclick = () => {
         if (inp16.value === "euro") {
-            res12.innerHTML = inp15.value * 0.91;
+            res12.innerHTML = +inp15.value * 0.91;
         } else if (inp16.value === "rub") {
-            res12.innerHTML = inp15.value * 64.20;
+            res12.innerHTML = +inp15.value * 64.20;
         } else if (inp16.value === "uah") {
-            res12.innerHTML = inp15.value * 24.63;
+            res12.innerHTML = +inp15.value * 24.63;
         }
     };
 
@@ -238,13 +238,13 @@
     btn10.onclick = () => {
         switch(inp18.value) {
             case "euro":
-                res13.innerHTML = inp17.value * 0.91;
+                res13.innerHTML = +inp17.value * 0.91;
                 break;
             case "rub":
-                res13.innerHTML = inp17.value * 64.20;
+                res13.innerHTML = +inp17.value * 64.20;
                 break;
             case "uah":
-                res13.innerHTML = inp17.value * 24.63;
+                res13.innerHTML = +inp17.value * 24.63;
                 break;
         }
     };

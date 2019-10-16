@@ -161,10 +161,34 @@
 
 // task 17 --------------------
    
-
 // task 18 --------------------
-  
+    const sp10 = document.querySelector('.sp10');
+    const sel2 = document.querySelector('#sel2');
+
+    sel2.onchange = () => {
+        sp10.innerHTML = sel2.value;
+    };
+
 // task 19 --------------------
-   
+    const btn16 = document.querySelector('.btn16');
+    const inp13 = document.querySelector('.inp13');
+    const inp14 = document.querySelector('.inp14');
+
+    btn16.onclick = (event) => {
+        event.preventDefault();
+        console.log("text: " + inp13.value);
+        console.log("password: " + inp14.value);
+    };
+
 // task 20 --------------------
+    const form = document.forms.form;
+    const btn17 = form.elements.btn17;
+    const inp15 = form.elements.inp15;
+    const inp16 = form.elements.inp16;
+
+    btn17.onclick = (event) => {
+        event.preventDefault();
+        console.log("text: " + inp15.value);
+        console.log("password: " + inp16.value);
+    };
    
