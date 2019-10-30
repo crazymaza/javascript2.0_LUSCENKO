@@ -108,15 +108,48 @@ sp10.innerHTML = 'A div with class "one" is ' + divOne.length + ' per page.';
 
 // task 12 --------------------
 
+const btn4 = document.querySelector('.btn4');
+const divOneO = document.querySelectorAll('.one');
+
+btn4.onclick = () => {
+    for(let i = 0; i < divOneO.length; i++) {
+        divOneO[i].style.width = '50px';
+        divOneO[i].style.height = '20px';
+        divOneO[i].style.marginBottom = '5px';
+        divOneO[i].style.backgroundColor = 'orange';
+    }  
+};
 
 // task 13 --------------------
 
+const btn5 = document.querySelector('.btn5');
+const divOneOn = document.querySelectorAll('.one');
+
+btn5.onclick = () => {
+    for(let i = 0; i < divOneOn.length; i++) {
+        console.log(divOneOn[i].textContent);
+    }
+};
 
 // task 14 --------------------
 
+const btn6 = document.querySelector('.btn6');
+const inpText = document.querySelectorAll('input[type="text"]');
+
+btn6.onclick = () => {
+    for(let i = 0; i < inpText.length; i++) {
+        inpText[i].placeholder = 'Введите данные';
+    }
+};
 
 // task 15 --------------------
 
+const btn7 = document.querySelector('.btn7');
+const inpText1 = document.querySelectorAll('input[type="text"]');
+
+btn7.onclick = () => {
+    console.log(inpText1.length);
+};
 
 // task 16 --------------------
 
