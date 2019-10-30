@@ -105,7 +105,7 @@
    <div>
       <p>Task 14. Создайте кнопку, при нажатии на которую запускается функция.
          Функция для всех input[type="text"] устанавливает свойство
-          placeholder = 'Введите данные'</p>
+         placeholder = 'Введите данные'</p>
       <input type="text" name="one-inp" id="inp6" disabled>
       <input type="text" name="two-inp" id="inp7" disabled>
       <input type="text" name="three-inp" id="inp8" disabled>
@@ -116,41 +116,52 @@
    <div>
       <p>Task 15. Создайте кнопку, при нажатии на которую запускается функция.
          Функция выводит в консоль количество input[type="text"]</p>
-         <button class="btn7">Show in console</button>
+      <button class="btn7">Show in console</button>
    </div>
    <hr>
    <div>
       <p>Task 16. Создайте три связанных radiobutton[name="p1"].
          Задайте им value.
          При нажатии на кнопку выводите на страницу value выбранного.</p>
-
+      <input type="radio" name="p1" id="inp9" value="value1">
+      <input type="radio" name="p1" id="inp10" value="value2">
+      <input type="radio" name="p1" id="inp11" value="value3">
+      <button class="btn8">Show value</button>
+      <span class="sp11"></span>
    </div>
    <hr>
    <div>
       <p>Task 17. Добавьте кнопку.
-         При нажатии кнопки делайте первый из созданных radiobutton в примере выше - checked.</p>
-
+         При нажатии кнопки делайте первый из созданных radiobutton
+         в примере выше - checked.</p>
+      <button class="btn9">Select the first radio button</button>
    </div>
    <hr>
    <div>
       <p>Task 18. Получите все radiobutton[name="p1"]. C помощью
          цикла замените в них value.
          Первому элементу присвойте value = 0, второму value = 1 и т.д.</p>
-
+      <button class="btn10">Change value</button>
    </div>
    <hr>
    <div>
       <p>Task 19. Создайте 3 input[radiobutton][name="p2"].
          Задайте им value равное 5, 3, 6. Добавьте кнопку при нажатии на котору проверяйте
          value выбранного элемента. Если оно не равно 6 - выводите false, если равно - true.</p>
-
+      <input type="radio" name="p2" id="inp12" value="5">
+      <input type="radio" name="p2" id="inp13" value="3">
+      <input type="radio" name="p2" id="inp14" value="6">
+      <button class="btn11">Is six</button>
+      <span class="sp12"></span>
    </div>
    <hr>
    <div>
       <p>Task 20. Создайте 3 input[radiobutton][name="p3"].
          С помощью цикла добавьте на них событие oninput.
          При изменении состояния input - выводите в консоль текст "был изменен input"</p>
-
+      <input type="radio" name="p3" id="inp15" value="7">
+      <input type="radio" name="p3" id="inp16" value="8">
+      <input type="radio" name="p3" id="inp17" value="9">
    </div>
    <hr>
    <script src="script.js"></script>
