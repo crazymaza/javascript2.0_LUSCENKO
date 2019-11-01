@@ -129,7 +129,7 @@ function t6() {
         for (let k = 0; k < 6; k++) {
             if (k === 0 || k === 4) {
                 out6.innerHTML += '1';
-            } else if(k === 1 || k === 3) {
+            } else if (k === 1 || k === 3) {
                 out6.innerHTML += '0';
             } else {
                 out6.innerHTML += 'x';
@@ -151,8 +151,8 @@ document.querySelector('.b-6').onclick = t6;
 // </pre>
 // <p>Внешний цикл выводит перенос строки br. Вложенный цикл запускается от нуля до i и рисует звездочку.</p>
 function t7() {
-    for(let i = 0; i <= 4; i++) {
-        for(let k = 0; k < i; k++) {
+    for (let i = 0; i <= 4; i++) {
+        for (let k = 0; k < i; k++) {
             out7.innerHTML += '*';
         }
         out7.innerHTML += '<br>';
@@ -172,8 +172,8 @@ document.querySelector('.b-7').onclick = t7;
 // </pre>
 // <p>Внешний цикл выводит перенос строки br. Вложенный цикл рисует звездочки. </p>
 function t8() {
-    for(let i = 5; i >= 1; i--) {
-        for(let k = i; k > 0; k--) {
+    for (let i = 5; i >= 1; i--) {
+        for (let k = i; k > 0; k--) {
             out8.innerHTML += '*';
         }
         out8.innerHTML += '<br>';
@@ -193,7 +193,12 @@ document.querySelector('.b-8').onclick = t8;
 // </pre>
 // <p>Внешний цикл выводит перенос строки br. Вложенный цикл рисует цифры</p>
 function t9() {
-
+    for (let i = 1; i <= 5; i++) {
+        for (let k = 1; k <= i; k++) {
+            out9.innerHTML += `${k} `;
+        }
+        out9.innerHTML += '<br>';
+    }
 }
 
 document.querySelector('.b-9').onclick = t9;
@@ -208,9 +213,21 @@ document.querySelector('.b-9').onclick = t9;
 // 41 42 43 44 45 46 47 48 49 50
 // </pre>
 // <p>Внешний цикл выводит перенос строки br и запускается от 0 до 6.</p>
-// <p>Вложенный цикл рисует цифры от 0 до 9. Обратите внимание, что первый ряд - есть ведущий нуль. Здесь все просто - проверили, если число меньше 10 - то конкатенируем нуль.</p>
+// <p>Вложенный цикл рисует цифры от 0 до 9. Обратите внимание, что первый ряд - есть ведущий нуль. 
+//    Здесь все просто - проверили, если число меньше 10 - то конкатенируем нуль.</p>
 function t10() {
-
+    let number = 1;
+    for (let i = 0; i < 5; i++) {
+        for (let k = 0; k <= 9; k++) {
+            if (number < 10) {
+                out10.innerHTML += `0${number} `;
+            } else {
+                out10.innerHTML += `${number} `;
+            }
+            number++;
+        }
+        out10.innerHTML += '<br>';
+    }
 }
 
 document.querySelector('.b-10').onclick = t10;
