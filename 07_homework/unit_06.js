@@ -8,7 +8,20 @@ const out1 = document.querySelector('.out-1'),
     out7 = document.querySelector('.out-7'),
     out8 = document.querySelector('.out-8'),
     out9 = document.querySelector('.out-9'),
-    out10 = document.querySelector('.out-10');
+    out10 = document.querySelector('.out-10'),
+    out6_1 = document.querySelector('.out-6-1'),
+    out7_1 = document.querySelector('.out-7-1'),
+    out8_1 = document.querySelector('.out-8-1'),
+    out9_1 = document.querySelector('.out-9-1'),
+    out10_1 = document.querySelector('.out-10-1'),
+    out13 = document.querySelector('.out-13'),
+    out14 = document.querySelector('.out-14'),
+    out15 = document.querySelector('.out-15'),
+    out16 = document.querySelector('.out-16'),
+    out17 = document.querySelector('.out-17'),
+    out18 = document.querySelector('.out-18'),
+    out19 = document.querySelector('.out-19'),
+    out20 = document.querySelector('.out-20');
 
 //  Task 1
 // <p>С помощью вложенных циклов, нарисуйте строку:</p>
@@ -231,3 +244,301 @@ function t10() {
 }
 
 document.querySelector('.b-10').onclick = t10;
+
+// Task 6.1
+// С помощью вложенных циклов и символа * нарисуйте:
+
+//        *****
+//      *****
+//     *****
+function t6_1() {
+    for (let i = 0; i < 3; i++) {
+        if (i === 0) {
+            out6_1.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;';
+        } else if (i === 1) {
+            out6_1.innerHTML += '&nbsp;&nbsp;';
+        }
+        for (let k = 0; k < 5; k++) {
+            out6_1.innerHTML += '*';
+        }
+        out6_1.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-6-1').onclick = t6_1;
+
+// Task 7.1
+// С помощью вложенных циклов и символа * нарисуйте:
+// *
+// **
+// ***
+// **
+// *
+function t7_1() {
+    let starCount = 0;
+    for (let i = 0; i <= 5; i++) {
+        for (let k = 0; k < starCount; k++) {
+            out7_1.innerHTML += '*';
+        }
+        if (i < 3) {
+            starCount++;
+        } else {
+            starCount--;
+        }
+        out7_1.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-7-1').onclick = t7_1;
+
+// Task 8.1
+// С помощью вложенных циклов и символа * нарисуйте:
+// ******
+// *    *
+// *    *
+// *    *
+// ******
+function t8_1() {
+    for (let i = 0; i < 5; i++) {
+        for (let k = 0; k < 6; k++) {
+            if (i != 0 && i != 4) {
+                if (k != 0 && k != 5) {
+                    out8_1.innerHTML += '&nbsp;&nbsp;';
+                } else {
+                    out8_1.innerHTML += '*';
+                }
+            } else {
+                out8_1.innerHTML += '*';
+            }
+        }
+        out8_1.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-8-1').onclick = t8_1;
+
+// Task 9.1
+// С помощью вложенных циклов и символа который вводит пользователь нарисуйте:
+// ******
+// *    *
+// *    *
+// *    *
+// ******
+function t9_1() {
+    const inpValue = document.querySelector('.inp1').value;
+    for (let i = 0; i < 5; i++) {
+        for (let k = 0; k < 6; k++) {
+            if (i != 0 && i != 4) {
+                if (k != 0 && k != 5) {
+                    out9_1.innerHTML += '&nbsp;&nbsp;';
+                } else {
+                    out9_1.innerHTML += inpValue;
+                }
+            } else {
+                out9_1.innerHTML += inpValue;
+            }
+        }
+        out9_1.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-9-1').onclick = t9_1;
+
+// Task 10.1
+// С помощью вложенных циклов вывените таблицу умножения на 6 и 7.
+function t10_1() {
+    for (let i = 6; i <= 7; i++) {
+        for (let k = 1; k <= 10; k++) {
+            out10_1.innerHTML += `${i} * ${k} = ${i * k} |`;
+        }
+        out10_1.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-10-1').onclick = t10_1;
+
+// Task 13
+// С помощью вложенных циклов нарисуйте, цифры - из счетчиков цикла:
+// 5 4 3 2 1
+// 4 3 2 1
+// 3 2 1
+// 2 1
+// 1
+function t13() {
+    for (let i = 5; i > 0; i--) {
+        for (let k = i; k > 0; k--) {
+            out13.innerHTML += `${k} `;
+        }
+        out13.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-13').onclick = t13;
+
+// Task 14
+// С помощью вложенных циклов нарисуйте, цифры - из счетчиков цикла:
+//         1
+//       2 1
+//     3 2 1
+//   4 3 2 1
+// 5 4 3 2 1
+function t14() {
+    for (let i = 1; i < 6; i++) {
+        for (let k = i; k > 0; k--) {
+            if (i < 5) {
+                for (let t = 5; t > k; t--) {
+                    out14.innerHTML += '&nbsp;&nbsp;&nbsp;';
+                }
+                for (let j = k; j > 0; j--) {
+                    out14.innerHTML += `${j} `;
+                }
+                break;
+            }
+            out14.innerHTML += `${k} `;
+        }
+        out14.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-14').onclick = t14;
+
+// Task 15
+// С помощью вложенных циклов нарисуйте, цифры - из счетчиков цикла:
+// X X X X 1
+// X X X 2 1
+// X X 3 2 1
+// X 4 3 2 1
+// 5 4 3 2 1
+function t15() {
+    for (let i = 1; i < 6; i++) {
+        for (let k = i; k > 0; k--) {
+            if (i < 5) {
+                for (let t = 5; t > k; t--) {
+                    out15.innerHTML += 'X ';
+                }
+                for (let j = k; j > 0; j--) {
+                    out15.innerHTML += `${j} `;
+                }
+                break;
+            }
+            out15.innerHTML += `${k} `;
+        }
+        out15.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-15').onclick = t15;
+
+// Task 16
+// С помощью вложенных циклов нарисуйте, цифры - из счетчиков цикла:
+// 1
+// 2 2
+// 3 3 3
+// 4 4 4 4 
+// 5 5 5 5 5
+function t16() {
+    for (let i = 1; i < 6; i++) {
+        for (let k = 0; k < i; k++) {
+            out16.innerHTML += `${i} `;
+        }
+        out16.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-16').onclick = t16;
+
+// Task 17
+// С помощью вложенных циклов нарисуйте, цифры - из счетчиков цикла:
+// 5
+// 4 4
+// 3 3 3
+// 2 2 2 2 
+// 1 1 1 1 1
+function t17() {
+    for (let i = 1; i < 6; i++) {
+        for (let k = 0; k < i; k++) {
+            out17.innerHTML += `${6 - i} `;
+        }
+        out17.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-17').onclick = t17;
+
+// Task 18
+// С помощью вложенных циклов нарисуйте, цифры - из счетчиков цикла (четные заменены на X):
+// 5
+// X X 
+// 3 3 3
+// X X X X 
+// 1 1 1 1 1
+function t18() {
+    for (let i = 1; i < 6; i++) {
+        for (let k = 0; k < i; k++) {
+            if (i % 2 === 0) {
+                out18.innerHTML += `X `;
+            } else {
+                out18.innerHTML += `${6 - i} `;
+            }
+        }
+        out18.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-18').onclick = t18;
+
+// Task 19
+// С помощью вложенных циклов и символа * нарисуйте:
+//   *****
+//  *******
+// *********
+function t19() {
+    for (let i = 0; i < 3; i++) {
+        for (let k = 0; k < 10; k++) {
+            if ((i === 0 && k === 0) ||
+                (i === 0 && k === 1) ||
+                (i === 0 && k === 8) ||
+                (i === 0 && k === 9) ||
+                (i === 1 && k === 0) ||
+                (i === 1 && k === 9)) {
+                out19.innerHTML += '&nbsp;&nbsp;';
+            } else {
+                out19.innerHTML += '*';
+            }
+        }
+        out19.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-19').onclick = t19;
+
+// Task 20
+// С помощью вложенных циклов и символа * нарисуйте:
+//   *****
+//  *******
+// *********
+function t20() {
+    for (let i = 0; i < 5; i++) {
+        for (let k = 0; k < 6; k++) {
+            if ((i === 0 && k === 0) ||
+                (i === 0 && k === 1) ||
+                (i === 0 && k === 4) ||
+                (i === 0 && k === 5) ||
+                (i === 1 && k === 0) ||
+                (i === 1 && k === 5) ||
+                (i === 3 && k === 0) ||
+                (i === 3 && k === 5) ||
+                (i === 4 && k === 0) ||
+                (i === 4 && k === 1) ||
+                (i === 4 && k === 4) ||
+                (i === 4 && k === 5)) {
+                out20.innerHTML += '&nbsp;&nbsp;';
+            } else {
+                out20.innerHTML += '*';
+            }
+        }
+        out20.innerHTML += '<br>';
+    }
+}
+
+document.querySelector('.b-20').onclick = t20;
