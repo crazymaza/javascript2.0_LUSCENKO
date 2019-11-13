@@ -5,6 +5,11 @@ body {
 
 body {
     margin: 20px auto;
+    padding: 0 10px 0 10px;
+}
+
+.css-1 {
+    background: green;
 }
 
 .css-2 {

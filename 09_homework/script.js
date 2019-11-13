@@ -305,11 +305,13 @@ console.log(func_14());
 function func_15() {
     let var16 = 1.1;
     let var17 = 0;
-
+    let var25 = var16 + 0.3;
+    let var26 = 568;
+    
     do {
-        var16 += 0.3;
+        var26 -= var25 + var16;
         var17++;
-    } while (var16 <= 568);
+    } while (var26 > 0);
     return var17;
 }
 
