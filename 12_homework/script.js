@@ -137,53 +137,163 @@ out10.textContent = arr10.reverse();
 // По нажатию на кнопку, читайте содержимое input.u-11__input в переменную u11. 
 // Потом примените к массиву arr11 метод indexOf ( читать за метод indexOf). 
 // Результат применения indexOf выводите на страницу в div.out-11. Последовательно проверьте программу вводя в input числа 1, 3, 5, 12.
+let arr11 = [0, 2, 3, 7, 8, 5, 11];
+const out11 = document.querySelector('.out-11');
+const inp11 = document.querySelector('.u-11__input');
+const btn11 = document.querySelector('.u-11__button');
 
-// let arr11 = [0, 2, 3, 7, 8, 5, 11];
+btn11.onclick = () => {
+    if (inp11.value.trim() != '') {
+        out11.textContent = arr11.indexOf(+inp11.value);
+    }
+};
+
 // Task 12.
 // Напишите функцию funcIndexOf, которая эмулирует работу метода indexOf. Программа должна:
-
 // читает содержимое input в переменную
 // Запускать цикл по массиву и сравнивать каждый элемент массива с введенным.
 // Если совпадение есть - останавливать цикл и выводить номер индекса на котором произошло совпадение.
 // Если совпадения нет выводить -1.
+const btn12 = document.querySelector('.u-12__button');
+btn12.onclick = () => {
+    if (inp11.value.trim() != '') {
+        for (let i = 0; i < arr11.length; i++) {
+            if (arr11[i] === +inp11.value) {
+                out11.textContent = i;
+                break;
+            } else {
+                out11.textContent = -1;
+            }
+        }
+    }
+};
+
 // Task 13.
 // Напишите функцию funcReverse, которая эмулирует работу метода reverse. Программа должна:
-
 // Создать новый пустой массив
 // Перебирать старый массив с конца (массив создайте сами)
 // По очереди по элементу присвоить значения в новый массив.
 // Вывести новый массив.
+const out13 = document.querySelector('.out-13');
+const t13 = (arr) => {
+    let newArr = [];
+    let count = 0;
+    for (let i = arr.length - 1; i >= 0; i--) {
+        newArr[count++] = arr[i];
+    }
+    return newArr;
+};
+out13.textContent = `${arr11} => ${t13(arr11)}`;
+
 // Task 14.
 // Создайте инпут, куда пользователь может ввести число элементов в массиве. 
 // Создайте функцию, которая прочитает введенное число и создаст массив такой длины, 
 // причем каждый элемент - это случайное число от 0 до 100. Массивы выведите на страницу.
+const u14 = document.querySelector('.u-14__input');
+const btn14 = document.querySelector('.task-14');
+const out14 = document.querySelector('.out-14');
+
+btn14.onclick = () => {
+    let arr = [];
+    for (let i = 0; i < +u14.value; i++) {
+        arr[i] = Math.floor(Math.random() * 100);
+    }
+    out14.textContent = arr;
+};
 
 // Task 15.
 // Создайте массив arr15. Напишите функцию, которая создаст новый массив, в который 
 // входят только четные элементы массива arr15 (элементы с четным индексом). Выведите на экран.
+const out15 = document.querySelector('.out-15');
+const arr15 = [1, 3, 5, 6, 8, 45, 7675, 345, 76567];
+const f15 = (arr) => {
+    let newArr = [];
+    let count = 0;
+    for (let index = 0; index < arr.length; index++) {
+        if (index % 2 === 0) {
+            newArr[count++] = arr[index];
+        }
+    }
+    return newArr;
+};
+out15.textContent = `${arr15} => ${f15(arr15)}`;
+
 
 // Task 16.
 // Создайте button.u-16__button. Объявите массив arr16_1 и arr16_2. По нажатию на кнопку 
 // примените к массивам метод concat ( читать за метод concat). Результат применения concat выводите на страницу в div.out-16.
+let arr16_1 = [3, 5, 7];
+let arr16_2 = [2, 4, 6];
+const out16 = document.querySelector('.out-16');
+const btn16 = document.querySelector('.u-16__button');
 
-// let arr16_1 = [3, 5, 7 ];
-// let arr16_2 = [2, 4, 6 ];
+arr16_1.concat(arr16_2);
+btn16.onclick = () => {
+    out16.textContent = arr16_1.concat(arr16_2);
+};
+
+
 // Task 17.
 // Напишите функцию funcConcat, которая эмулирует работу метода concat. Программа должна:
-
 // Перебирает второй массив и его элементы добавляет в первый массив.
 // Выводит массив на страницу.
+
+let arr17_1 = [4, 6, 8];
+let arr17_2 = [5, 3, 1];
+const out17 = document.querySelector('.out-17');
+
+const funcConcat = (arr1, arr2) => {
+    for (let i = 0; i < arr2.length; i++) {
+        arr1[arr1.length++] = arr2[i];
+    }
+    return arr1;
+};
+
+out17.textContent = funcConcat(arr17_1, arr17_2);
+
 // Task 18.
 // Создайте button.u-18__button и input.u-18__input. Объявите массив arr18 . 
 // По нажатию на кнопку примените к массивам метод includes, который проверяет есть 
 // ли в массиве значение введенное в input. ( читать за метод includes). Результат применения includes выводите на страницу в div.out-18.
+let arr18 = [3, 5, 7, 11, 12, 13, 14, 'qqq'];
+const out18 = document.querySelector('.out-18');
+const btn18 = document.querySelector('.u-18__button');
+const inp18 = document.querySelector('.u-18__input');
 
-// let arr16_1 = [3, 5, 7, 11, 12, 13, 14 ];
+btn18.onclick = () => {
+    if (+inp18.value) {
+        out18.textContent = arr18.includes(+inp18.value);
+    } else {
+        out18.textContent = arr18.includes(inp18.value);
+    }
+};
+
 // Task 19.
 // Напишите функцию funcIncludes, которая эмулирует работу метода includes. Программа должна:
-
 // Перебирает второй массив и сравнивать если введенный элемент совпал с текущим - прекращать работу цикла и выводить true.
 // Если совпадений нет - false.
+const btn19 = document.querySelector('.u-19__button');
+
+const funcIncludes = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === inp18.value || arr[i] === +inp18.value) {
+            return true;
+        }
+    }
+    return false;
+};
+
+btn19.onclick = () => {
+    out18.textContent = funcIncludes(arr18);
+};
+
 // Task 20.
 // Объявите массив arr20. Создайте кнопку, по нажатию которую к массиву применяется метод join ( читать за метод join). 
 // Результа выведите на страницу.
+const out20 = document.querySelector('.out-20');
+const btn20 = document.querySelector('.u-20__button');
+let arr20 = [1, 3, 5, 7, 3, 78, 88];
+
+btn20.onclick = () => {
+    out20.textContent = arr20.join('+');
+};
