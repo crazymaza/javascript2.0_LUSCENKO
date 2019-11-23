@@ -140,9 +140,38 @@ u8btn.onclick = () => {
 
 // Task 9.
 // Добавьте к предыдущей задачи input.u9-delete-value__input и кнопку. При нажатии кнопки - удаляйте записи с соответствующим значением. Выводите массив на страницу.
+const u9btn = document.querySelector('.u9__button');
+const u9value = document.querySelector('.u9-delete-value__input');
+
+u9btn.onclick = () => {
+  out9.innerHTML += 'Before remove element:<br>';
+  for (const key in a7) {
+    out9.innerHTML += `${key} : ${a7[key]}<br>`;
+  }  
+  out9.innerHTML += 'After remove element:<br>';
+  for (const key in a7) {
+    if (a7[key] == u9value.value) {
+      delete a7.key;
+      continue;
+    }
+    out9.innerHTML += `${key} : ${a7[key]}<br>`;
+  }
+};
 
 // Task 10.
 // Добавьте к предыдущей задачи input.u10-has-key__input и кнопку. При нажатии кнопки - возвращайте true если такой ключ есть в массиве, и false если нет.
+const u10btn = document.querySelector('.u10__button');
+const u10key = document.querySelector('.u10-has-key__input');
+
+u10btn.onclick = () => {
+  for (const key in a7) {
+    if (key == u10key.value) {
+      out10.textContent = true;
+    } else {
+      out10.textContent = false;
+    }
+  }
+};
 
 // Task 11.
 // Создайте массив, который описывает метро киевского метрополитена, выведите его на страницу.
