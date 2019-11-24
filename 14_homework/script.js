@@ -127,7 +127,7 @@ u8btn.onclick = () => {
   out8.innerHTML += 'Before remove element:<br>';
   for (const key in a7) {
     out8.innerHTML += `${key} : ${a7[key]}<br>`;
-  }  
+  }
   out8.innerHTML += 'After remove element:<br>';
   for (const key in a7) {
     if (key == u8key.value) {
@@ -147,7 +147,7 @@ u9btn.onclick = () => {
   out9.innerHTML += 'Before remove element:<br>';
   for (const key in a7) {
     out9.innerHTML += `${key} : ${a7[key]}<br>`;
-  }  
+  }
   out9.innerHTML += 'After remove element:<br>';
   for (const key in a7) {
     if (a7[key] == u9value.value) {
@@ -179,21 +179,82 @@ u10btn.onclick = () => {
 // 	"red" : ['Академгородок',...],
 // 	"green" : 
 // }
+a11 = {
+  'red': ['Чистые пруды', 'Лубянка', 'Комсомольская', 'Сокольники'],
+  'green': ['Театральная', 'Тверская', 'Маяковская', 'Аэропорт']
+};
+for (const key in a11) {
+  out11.innerHTML += `${key} : ${a11[key]}<br>`;
+}
 
 // Task 12.
 // Добавьте к предыдущей задаче select.u12-branch и кнопку. Пользователь может выбрать цвет ветки и нажать кнопку, после чего на страницу будут выведены только станции данной ветки.
+const btn12 = document.querySelector('.btn12');
+const select12 = document.querySelector('.u12-branch');
+
+btn12.onclick = () => {
+  for (const key in a11) {
+    if (key == select12.value) {
+      out12.innerHTML = a11[key];
+    }
+  }
+};
 
 // Task 13.
-// Добавьте к предыдущей задаче кнопку button.u13-reverse которая при нажатии выводит станции ветки в обратном порядке. Внимание! Все подобные задачи не меняют массив, а меняют только вывод!!!
+// Добавьте к предыдущей задаче кнопку button.u13-reverse которая при нажатии выводит станции ветки в обратном порядке. 
+// Внимание! Все подобные задачи не меняют массив, а меняют только вывод!!!
+const btn13 = document.querySelector('.u13-reverse');
+btn13.onclick = () => {
+  for (const key in a11) {
+    if (key == select12.value) {
+      out13.innerHTML = a11[key].reverse();
+    }
+  }
+};
 
 // Task 14.
 // Добавьте к предыдущей задаче select.u14-find-station и кнопку. В select - пользователь может выбрать станцию, а вы перебирая массив - вывести ветку на которой эта станция находится.
+const btn14 = document.querySelector('.btn14');
+const select14 = document.querySelector('.u14-find-station');
+btn14.onclick = () => {
+  for (const key in a11) {
+    for (let i = 0; i < a11[key].length; i++) {
+      if (a11[key][i] == select14.value) {
+        out14.innerHTML = key;
+      }
+    }
+  }
+};
 
 // Task 15.
-// Добавьте к предыдущему заданию 2 select где пользователь может выбрать 2 станции, и если они на одной ветке - то по нажатию на кнопку будет показано сколько станций между ними (сами станции не включаем. Если это соседние станции - то 0).
+// Добавьте к предыдущему заданию 2 select где пользователь может выбрать 2 станции, и если они на одной ветке - то по нажатию на кнопку
+//  будет показано сколько станций между ними (сами станции не включаем. Если это соседние станции - то 0).
+const btn15 = document.querySelector('.btn15');
+const select15_1 = document.querySelector('.u15-first');
+const select15_2 = document.querySelector('.u15-second');
+
+btn15.onclick = () => {
+  for (const key in a11) {
+    for (let i = 0; i < a11[key].length; i++) {
+      if (a11[key][i] == select15_1.value) {
+        for (let k = 0; k < a11[key].length; k++) {
+          if (a11[key][k] == select15_2.value) {
+            return out15.innerHTML = `Между станциями ещё ${Math.abs(i - k)} станции.`;
+          }
+        }
+      } else {
+        out15.innerHTML = 'Stations on different lines.';
+      }
+    }
+  }
+};
+
 
 // Task 16.
-// Добавьте 3 radiobutton.u16-radio которые содержат value = red, green, blue - в соотвтествии с цветом веток метро. Добавьте пустой select.u16-select. При выборе radio - программа должна в select добавлять option с названиями станций метро. Т.е. выбрали radio(value="green") то внутрь select должны быть записаны option со станциями зеленой ветки. Выбрали red - select должен быть очищен и добавлены option со станциями красной ветки.
+// Добавьте 3 radiobutton.u16-radio которые содержат value = red, green, blue - в соотвтествии с цветом веток метро. 
+// Добавьте пустой select.u16-select. При выборе radio - программа должна в select добавлять option 
+// с названиями станций метро. Т.е. выбрали radio(value="green") то внутрь select должны быть записаны option со станциями зеленой ветки. 
+// Выбрали red - select должен быть очищен и добавлены option со станциями красной ветки.
 
 // Task 17.
 // Создайте массив, который описывает метро киевского метрополитена и обозначаются конечные и станции перехода, выведите его на страницу. Конечные - обозначать 0, перехода - 1.
@@ -206,7 +267,8 @@ u10btn.onclick = () => {
 // Выведите на страницу только станции с переходами из массива a17.
 
 // Task 19.
-// Создайте ассоциативный массив где ключами являются страны азии, а вложенными массивами - ассоциативный массив содержащий название столицы, количество населения, площадь. Выведите его на страницу.
+// Создайте ассоциативный массив где ключами являются страны азии, а вложенными массивами - ассоциативный массив содержащий название столицы, количество населения, площадь. 
+// Выведите его на страницу.
 
 // Task 20.
 // Дополните массив из задачи 19 так, чтобы пользователь мог сам выбирать страну в select, а необходимая информация подтягивалась на страницу.
