@@ -258,14 +258,26 @@ btn15.onclick = () => {
   }
 };
 
-
 // Task 16.
 // Добавьте 3 radiobutton.u16-radio которые содержат value = red, green, blue - в соотвтествии с цветом веток метро. 
 // Добавьте пустой select.u16-select. При выборе radio - программа должна в select добавлять option 
 // с названиями станций метро. Т.е. выбрали radio(value="green") то внутрь select должны быть записаны option со станциями зеленой ветки. 
 // Выбрали red - select должен быть очищен и добавлены option со станциями красной ветки.
-
-
+const radio16 = document.querySelectorAll('.u16-radio');
+for (let i = 0; i < radio16.length; i++) {
+  radio16[i].onchange = () => {
+    out16.innerHTML = '';
+    for (const key in a11) {
+      if (key === radio16[i].value) {
+        for (let k = 0; k < a11[key].length; k++) {
+          let elem = document.createElement('option');
+          elem.textContent = a11[key][k];
+          out16.appendChild(elem);
+        }
+      }
+    }
+  };
+}
 
 // Task 17.
 // Создайте массив, который описывает метро киевского метрополитена и обозначаются конечные и станции перехода, выведите его на страницу. Конечные - обозначать 0, перехода - 1.
@@ -273,6 +285,28 @@ btn15.onclick = () => {
 // 	"red" : [ ['Академгородок', 0] ,...],
 // 	"green" : 
 // }
+const a17 = {
+  'red': [
+    ['Саларьево', 0],
+    ['Бульвар Рокосовского', 0],
+    ['Чистые пруды', 1],
+    ['Лубянка', 1],
+  ],
+  'green': [
+    ['Речной вокзал', 0],
+    ['Красногвардейская', 0],
+    ['Театральная', 1],
+    ['Тверская', 1],
+  ]
+};
+
+for (const key in a17) {
+  out17.innerHTML += `${key}<br>`;
+  for (let i = 0; i < a17[key].length; i++) {
+     out17.innerHTML += `${a17[key][i]} <br>`; 
+  }
+  out17.innerHTML += '<br>';
+}
 
 // Task 18.
 // Выведите на страницу только станции с переходами из массива a17.
