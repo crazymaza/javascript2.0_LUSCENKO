@@ -234,12 +234,21 @@ const select15_1 = document.querySelector('.u15-first');
 const select15_2 = document.querySelector('.u15-second');
 
 btn15.onclick = () => {
+  if (select15_1.value == select15_2.value) {
+    out15.innerHTML = `Это одна и та же станция.`;
+    return;
+  }
   for (const key in a11) {
     for (let i = 0; i < a11[key].length; i++) {
       if (a11[key][i] == select15_1.value) {
         for (let k = 0; k < a11[key].length; k++) {
           if (a11[key][k] == select15_2.value) {
-            return out15.innerHTML = `Между станциями ещё ${Math.abs(i - k)} станции.`;
+            if (Math.abs(i - k) == 1) {
+              out15.innerHTML = `Это соседние станции.`;
+              return;
+            }
+            out15.innerHTML = `Между станциями ещё ${Math.abs(i - k) - 1} станции.`;
+            return;
           }
         }
       } else {
@@ -255,6 +264,8 @@ btn15.onclick = () => {
 // Добавьте пустой select.u16-select. При выборе radio - программа должна в select добавлять option 
 // с названиями станций метро. Т.е. выбрали radio(value="green") то внутрь select должны быть записаны option со станциями зеленой ветки. 
 // Выбрали red - select должен быть очищен и добавлены option со станциями красной ветки.
+
+
 
 // Task 17.
 // Создайте массив, который описывает метро киевского метрополитена и обозначаются конечные и станции перехода, выведите его на страницу. Конечные - обозначать 0, перехода - 1.
