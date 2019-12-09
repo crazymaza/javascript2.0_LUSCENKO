@@ -303,17 +303,84 @@ const a17 = {
 for (const key in a17) {
   out17.innerHTML += `${key}<br>`;
   for (let i = 0; i < a17[key].length; i++) {
-     out17.innerHTML += `${a17[key][i]} <br>`; 
+    out17.innerHTML += `${a17[key][i]} <br>`;
   }
   out17.innerHTML += '<br>';
 }
 
 // Task 18.
 // Выведите на страницу только станции с переходами из массива a17.
+for (const key in a17) {
+  for (let i = 0; i < a17[key].length; i++) {
+    if (a17[key][i][1] === 1) {
+      out18.innerHTML += `${a17[key][i][0]}<br>`;
+    }
+  }
+}
 
 // Task 19.
 // Создайте ассоциативный массив где ключами являются страны азии, а вложенными массивами - ассоциативный массив содержащий название столицы, количество населения, площадь. 
 // Выведите его на страницу.
+const country = {
+  'Kazakhstan': {
+    'capital': 'Nursultan',
+    'population': 18000000,
+    'area': 2725000,
+  },
+  'Abkhazia': {
+    'capital': 'Sukhum',
+    'population': 243206,
+    'area': 8665,
+  },
+  'Azerbaijan': {
+    'capital': 'Baku',
+    'population': 9898000,
+    'area': 86600,
+  },
+  'Armenia': {
+    'capital': 'Yerevan',
+    'population': 2986100,
+    'area': 29743,
+  },
+  'Bahrain': {
+    'capital': 'Manama',
+    'population': 1343000,
+    'area': 766,
+  },
+  'Butane': {
+    'capital': 'Thimphu',
+    'population': 750125,
+    'area': 38394,
+  },
+  'Jordan': {
+    'capital': 'Amman',
+    'population': 9856034,
+    'area': 92300,
+  }
+};
+
+for (const key in country) {
+  out19.innerHTML += `<b>${key}</b><br>`;
+  for (const yey in country[key]) {
+    out19.innerHTML += `- ${yey}: `;
+    out19.innerHTML += `${country[key][yey]}<br>`;
+  }
+}
 
 // Task 20.
 // Дополните массив из задачи 19 так, чтобы пользователь мог сам выбирать страну в select, а необходимая информация подтягивалась на страницу.
+const u20select = document.querySelector('.u20-select');
+
+u20select.onchange = () => {
+  out20.innerHTML = '';
+  for (const key in country) {
+    if (u20select.value === key) {
+      out20.innerHTML += `<b>${key}</b><br>`;
+      for (const yey in country[key]) {
+        out20.innerHTML += `- ${yey}: `;
+        out20.innerHTML += `${country[key][yey]}<br>`;
+      }
+      break;
+    }
+  }
+};
