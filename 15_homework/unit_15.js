@@ -263,13 +263,23 @@ document.querySelector('.b-13').onclick = () => {
         Т.е. ввели в качестве разделителя дефис и вывод на страницу 1-2-3- (без пробелов).
  */
 
-// let set14 = 
-// let elem14 = 
-// let sep14 = '-'
+let set14 = new Set();
+set14.add(1);
+set14.add(2);
+set14.add(3);
+let elem14 = document.querySelector('.out-14');
+let sep14 = '-';
 
-function t14(a14) {
- 
-
+function t14(a14, elem, sep) {
+	let count = 0;
+	for (const a14Element of a14) {
+		if (count < a14.size - 1) {
+			elem.textContent += ` ${a14Element} ${sep} `;
+			count++;
+		} else {
+			elem.textContent += `${a14Element}`;
+		}
+	}
 }
 
 document.querySelector('.b-14').onclick = () => {
@@ -287,10 +297,17 @@ let a15 = [
 	[1, 0],
 	[2, 0]
 ];
+let a15set = new Set();
 
 function t15(a15) {
-
-
+	for (let i = 0; i < a15.length; i++) {
+		for (let j = 0; j < a15[i].length; j++) {
+			a15set.add(a15[i][j]);
+		}
+	}
+	for (const a15setElem of a15set) {
+		document.querySelector('.out-15').textContent += `${a15setElem},`;
+	}
 }
 
 document.querySelector('.b-15').onclick = function () {
@@ -310,23 +327,25 @@ document.querySelector('.b-15').onclick = function () {
     Результат операции запишите в a16_res.
  */
 
-let a16 = [{
-		Ivan: 1
-	},
-	{
-		Ivan: 1
-	},
-	{
-		Ivan: 2
-	},
-	{
-		Serg: 0
-	}
+let a16 = [
+	{Ivan: 1},
+	{Ivan: 1},
+	{Ivan: 2},
+	{Serg: 0}
 ];
-
+let a16set = new Set();
 function t16(a16) {
+	for (let i = 0; i < a16.length; i++) {
+		for (const a16Key in a16) {
+			a16set.add(a16[a16Key]);
+		}
+	}
+	for (const a16setElem of a16set) {
+		for (const a16setKey in a16setElem) {
+			document.querySelector('.out-16').textContent += ` ${a16setKey} ${a16setElem[a16setKey]}`;
+		}
 
-
+	}
 }
 
 document.querySelector('.b-16').onclick = function () {
@@ -360,7 +379,7 @@ function t18(a18) {
 }
 
 document.querySelector('.b-18').onclick = function () {
-	t18(a18)
+	t18(a18);
 };
 
 // Task 19 ============================================!!!
@@ -375,14 +394,15 @@ function t19() {
 }
 
 document.querySelector('.b-19').onclick = () => {
-	t19(a19)
+	t19(a19);
 };
 
 // Task 20 ============================================!!!
 /* Создайте функцию, которая принимает массив и четные по индексу элементы добавляет в набор s20_res в нечетные в набор s21_res. Выводите данные наборы в консоль.
  */
 
-function t20(a20) {}
+function t20(a20) {
+}
 
 document.querySelector('.b-20').onclick = function () {
 	// let arr20 =
