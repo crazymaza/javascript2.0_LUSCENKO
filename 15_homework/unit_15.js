@@ -8,8 +8,7 @@ let a2_res,
 	a16_res = {},
 	a18_res = {},
 	s20_res,
-	s21_res
-;
+	s21_res;
 
 // Task 1 ============================================
 /* Создайте новый Set. Добавьте в него через add элементы. Выведите в консоль.  */
@@ -59,7 +58,7 @@ document.querySelector('.b-3').onclick = function () {
 
 // Task 4 ============================================
 /*  Добавьте к предыдущему заданию кнопку проверить. При нажатии кнопки читаете содержимое input и проверяет его наличие в Set. Функция должна возвращать true или false.Действия запускаются при вызове функции t4. 
-*/
+ */
 
 function t4(elem) {
 	return a2.has(elem);
@@ -240,12 +239,16 @@ document.querySelector('.b-12').onclick = () => t12(a12);
     Действия должны запускаться при вызове функции t13.
  */
 
-// let set13 = 
-// let elem13 = 
+let set13 = new Set();
+set13.add(1);
+set13.add(2);
+set13.add(3);
+let elem13 = document.querySelector('.out-13');
 
 function t13(set13, elem13) {
-
-
+	for (const set13Elem of set13) {
+		elem13.textContent += `${set13Elem}, `;
+	}
 }
 
 document.querySelector('.b-13').onclick = () => {
@@ -265,7 +268,7 @@ document.querySelector('.b-13').onclick = () => {
 // let sep14 = '-'
 
 function t14(a14) {
-
+ 
 
 }
 
@@ -307,11 +310,18 @@ document.querySelector('.b-15').onclick = function () {
     Результат операции запишите в a16_res.
  */
 
-let a16 = [
-	{Ivan: 1},
-	{Ivan: 1},
-	{Ivan: 2},
-	{Serg: 0}
+let a16 = [{
+		Ivan: 1
+	},
+	{
+		Ivan: 1
+	},
+	{
+		Ivan: 2
+	},
+	{
+		Serg: 0
+	}
 ];
 
 function t16(a16) {
@@ -372,8 +382,7 @@ document.querySelector('.b-19').onclick = () => {
 /* Создайте функцию, которая принимает массив и четные по индексу элементы добавляет в набор s20_res в нечетные в набор s21_res. Выводите данные наборы в консоль.
  */
 
-function t20(a20) {
-}
+function t20(a20) {}
 
 document.querySelector('.b-20').onclick = function () {
 	// let arr20 =
