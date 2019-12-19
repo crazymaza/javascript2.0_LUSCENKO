@@ -334,17 +334,13 @@ let a16 = [
 	{Serg: 0}
 ];
 let a16set = new Set();
+
 function t16(a16) {
 	for (let i = 0; i < a16.length; i++) {
-		for (const a16Key in a16) {
-			a16set.add(a16[a16Key]);
-		}
+		a16set.add(a16[i]);
 	}
 	for (const a16setElem of a16set) {
-		for (const a16setKey in a16setElem) {
-			document.querySelector('.out-16').textContent += ` ${a16setKey} ${a16setElem[a16setKey]}`;
-		}
-
+		console.log(a16setElem);
 	}
 }
 
@@ -360,26 +356,43 @@ document.querySelector('.b-16').onclick = function () {
 
 function t17() {
 	let u17 = 'Primer';
-
+	console.log(new Set(u17));
 }
 
 document.querySelector('.b-17').onclick = t17;
 
 // Task 18 ============================================
 /*  
-    Очень сложное! Можно пропустить без последствий! Напишите функцию, которая принимает строку и считает сколько раз встречается та либо инная буква. Результат в виде ассоциативного массива присваивает в переменуню a18_res. Данную функцию можно использовать для анализа текста.
-    Действия должны запускаться при вызове функции t18.
+    Очень сложное! Можно пропустить без последствий!
+    Напишите функцию, которая принимает строку и считает сколько раз встречается та либо инная буква.
+    Результат в виде ассоциативного массива присваивает в переменуню a18_res.
+    Данную функцию можно использовать для анализа текста.
+    Действия должны запускаться п ри вызове функции t18.
  */
 
-let a18 = 'Hello';
+let a18 = 'Hello',
+	a18_1 = [5, 7, 9, 11, 13, 15],
+	resultString = '',
+	count = 0;
 
+//Задача из JS файла.
 function t18(a18) {
 
 
+	console.log(resultString);
+}
+
+//Задача из HTML файла.
+function t18_1(a18) {
+	for (const a18Element of a18) {
+		resultString += `${count++} - ${a18Element}\n`;
+	}
+	console.log(resultString);
 }
 
 document.querySelector('.b-18').onclick = function () {
 	t18(a18);
+	t18_1(a18_1);
 };
 
 // Task 19 ============================================!!!
