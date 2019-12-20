@@ -377,10 +377,22 @@ let a18 = 'Hello',
 
 //Задача из JS файла.
 function t18(a18) {
+	let a18String = a18.split('');
+	let string = new Set(a18.split(''));
 
-
-	console.log(resultString);
+	for (const string1 of string) {
+		let count = 0;
+		for (let i = 0; i < a18String.length; i++) {
+			if (a18String[i] === string1) {
+				count++;
+				a18_res[a18String[i]] = count;
+			}
+		}
+		count = 0;
+	}
+	console.log(a18_res);
 }
+
 
 //Задача из HTML файла.
 function t18_1(a18) {
@@ -400,10 +412,16 @@ document.querySelector('.b-18').onclick = function () {
     Действия должны запускаться при вызове функции t19.
  */
 
-// let a19 = 
+let a19 = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
 function t19() {
-
+	count = 0;
+	for (const a19key of a19) {
+		if (count % 2 === 0) {
+			document.querySelector('.out-19').textContent += `${a19key} `;
+		}
+		count++;
+	}
 }
 
 document.querySelector('.b-19').onclick = () => {
@@ -411,13 +429,25 @@ document.querySelector('.b-19').onclick = () => {
 };
 
 // Task 20 ============================================!!!
-/* Создайте функцию, которая принимает массив и четные по индексу элементы добавляет в набор s20_res в нечетные в набор s21_res. Выводите данные наборы в консоль.
+/* Создайте функцию, которая принимает массив и четные по индексу элементы
+   добавляет в набор s20_res в нечетные в набор s21_res. Выводите данные наборы в консоль.
  */
 
 function t20(a20) {
+	let arr20_res = [];
+	let arr21_res = [];
+	for (let i = 0; i < a20.length; i++) {
+		if (a20[i] % 2 === 0) {
+			arr20_res.push(a20[i]);
+		} else {
+			arr21_res.push(a20[i]);
+		}
+	}
+	console.log(arr20_res);
+	console.log(arr21_res);
 }
 
 document.querySelector('.b-20').onclick = function () {
-	// let arr20 =
+	let arr20 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 	t20(arr20);
 };
