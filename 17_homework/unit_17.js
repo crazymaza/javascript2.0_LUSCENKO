@@ -102,7 +102,7 @@ document.querySelector('.b-7').onclick = t7;
 function t8() {
 	let b8 = [3, 14, 15, 92, "6", "5", "hello", 32];
 	let b8_res1 = b8.filter((item, index) => {
-		if (+item && item % 2 === 0) {
+		if (typeof (item) === 'number' && item % 2 === 0) {
 			b8_res.push(index);
 		}
 	});
