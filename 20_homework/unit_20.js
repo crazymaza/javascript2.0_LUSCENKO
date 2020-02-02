@@ -124,6 +124,7 @@ document.querySelector('.i-9').onkeydown = t9;
 // Task 10 ============================================
 /*  Дан input .i-10 и изображение 1.png. Добавьте событие на input, при нажатии клавиш стрелка вправо и стрелка влево увеличивать ширину изображения. Клавиши стрелка вверх и вниз - увеличивать высоту изображения. Одно нажатие клавиши - 1px. */
 const img = document.querySelector('.div-10 img');
+const div = document.querySelector('.div-10');
 let imgH = 75;
 let imgW = 75;
 
@@ -131,10 +132,12 @@ let imgW = 75;
 function t10(e) {
 
 	if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-		img.style.height = imgH + 'px';
+		img.style.height = `${imgH}px`;
+		div.style.height = `${imgH}px`;
 	}
 	if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-		img.style.width = imgW + 'px';
+		img.style.width = `${imgW}px`;
+		div.style.width = `${imgW}px`;
 	}
 	imgH++;
 	imgW++;
@@ -144,10 +147,40 @@ function t10(e) {
 document.querySelector('.i-10').onkeydown = t10;
 // Task 11 ============================================
 /*  Проект. Дан input .i-11. Используя знания html и css нарисуйте клавиатуру (можно схематически). Изображение должно содержать числа, символьные клавиши, пробел, enter, caps lock, shift, tab, alt. При вводе текста в input в момент нажатия клавиши - затемняйте ее, в момент отпускания - возвращайте к первоначальному состоянию. Аналогично при нажатии enter, space, alt, shift, ctrl. Затемнение реализуйте через добавление класса CSS. Для удобства рекомендую каждой клавише добавить атрибут data с символом. Если нажата клавиша caps lock - то присвоить ей затемнение, которое работает до последующего отжатия клавиши. */
+const buttonsArray = document.querySelectorAll('.button');
+function t11(e) {
+	for (const btn of buttonsArray) {
+		if (e.getModifierState('CapsLock') &&
+			btn.getAttribute('data-value') === 'CapsLock') {
+			btn.classList.add('pressed');
+		}
+		if (e.code === 'Tab' &&
+			btn.getAttribute('data-value') === 'Tab') {
+			e.preventDefault();
+		}
+		if (e.code === btn.getAttribute('data-value') &&
+			e.code !== 'CapsLock') {
+			btn.classList.add('pressed');
+		}
+	}
+}
 
-function t11() {
-
+function t111(e) {
+	const buttonsArray = document.querySelectorAll('.button');
+	for (const btn of buttonsArray) {
+		if (!e.getModifierState('CapsLock') &&
+			btn.getAttribute('data-value') === 'CapsLock') {
+			btn.classList.remove('pressed');
+		}
+		if (e.code === btn.getAttribute('data-value') &&
+			e.code !== 'CapsLock') {
+			btn.classList.remove('pressed');
+			// break;
+		}
+	}
 }
 
 // ваше событие здесь!!!
+document.querySelector('.i-11').onkeydown = t11;
+document.querySelector('.i-11').onkeyup = t111;
 

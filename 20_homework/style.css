@@ -1,4 +1,4 @@
-.container  {
+.container {
     width: 100%;
 }
 
@@ -21,4 +21,18 @@ section {
 
 .hide {
     display: none;
+}
+
+/* Keyboard Style */
+.out-11 {
+    margin-top: 20px;
+}
+
+.space {
+    text-align: center;
+    width: 280px;
+}
+
+.pressed {
+    background-color: rgba(0, 0, 0, 0.2);
 }
