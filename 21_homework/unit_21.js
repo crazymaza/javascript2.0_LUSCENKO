@@ -130,7 +130,7 @@ let count12 = 1;
 for (const aElement of a) {
     let img = document.createElement('img');
     img.setAttribute('src', `img/${aElement}`);
-    img.classList.add('img-12-min')
+    img.classList.add('img-12-min');
     div12Wrapper.append(img);
     if (img.getAttribute('src').endsWith(a[0])) {
         img.classList.add('active-img');
