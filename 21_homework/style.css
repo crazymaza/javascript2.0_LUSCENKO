@@ -25,6 +25,7 @@ section {
 
 .img-12-min {
     width: 64px;
+    transition: all ease 0.2s;
 }
 
 .img-12-max {
