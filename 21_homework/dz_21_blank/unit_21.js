@@ -81,20 +81,19 @@ document.querySelector('.div-8').addEventListener('touchstart', t8);
 // Task 9 ============================================
 /* Дан блок div-9. Добавьте событие ontouch. Выводите количество одновременных касаний в out-9. */
 
-function t9() {
-
+function t9(e) {
+    console.log(e);
+    
 }
 
 // ваше событие здесь!!!
-
+document.querySelector('.div-9').addEventListener('touchstart', t9);
 
 // Task 10 ============================================
 /*  Дан блок div-10. Добавьте на него событие touchmove. При срабатывании события - увеличивайте его ширину на 1. */
 
 let w = 75;
 function t10(e) {
-    console.log(e);
-    
     document.querySelector('.div-10').style.width = `${w++}px`;
 }
 
@@ -104,11 +103,12 @@ document.querySelector('.div-10').addEventListener('touchmove', t10);
 /*  Дан блок div-11. Добавьте на него событие touch. При срабатывании выводите радиус события radiusX, radiusY. */
 
 function t11(e) {
-    document.querySelector('.out-11').textContent = `${e.touches[0].radiusX} & ${e.touches[0].radiusY}`;
+    document.querySelector('.out-11').textContent =
+     `radiusX ${e.changedTouches[0].radiusX}, radiusY ${e.changedTouches[0].radiusY}`;
 }
 
 // ваше событие здесь!!!
-document.querySelector('.div-11').addEventListener('touchstart', t11);
+document.querySelector('.div-11').addEventListener('touchend', t11);
 // Task 12 ============================================
 /*  Мини проект. Ознакомьтесь с версткой в задании 12. Добавьте touch события так, чтобы при клике на img-12-min картинка появлялась в блоке div-12-max. Если нажимается кнопка prev - то появляется изображение идущее перед текущим. Если нажимается кнопка next - то после текущего. Выбор изображений зациклен.  Изображение, которое сейчас дублируется в большом блоке должно выделяться классом .active-img. Добавьте кнопку reset для сброса состояния, когда выводится первое изображение. Все изображения и начальное состояние - выводится из массива 
     a = [1.png, 2.png, 3.png, 4.png, 5.png, 6.png] - изображения находятся в папке img.
@@ -116,7 +116,7 @@ document.querySelector('.div-11').addEventListener('touchstart', t11);
     Источник иконок https://www.iconfinder.com/iconsets/unigrid-phantom-halloween
 */
 
-function t11() {
+function t12() {
 
 }
 
