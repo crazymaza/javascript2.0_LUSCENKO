@@ -120,26 +120,40 @@ document.querySelector('.div-11').addEventListener('touchend', t11);
     Источник иконок https://www.iconfinder.com/iconsets/unigrid-phantom-halloween
 */
 //Определяем переменные
-const a = ['1.png', '2.png', '3.png', '4.png', '5.png', '6.png'];
+const a = [
+	{'Skull': '1.png'},
+	{'Pumpkin': '2.png'},
+	{'Spider': '3.png'},
+	{'Poison': '4.png'},
+	{'Hot Bone': '5.png'},
+	{'Dead Hand': '6.png'},
+];
 const div12Wrapper = document.querySelector('.div-12-wrapper');
 const div12Max = document.querySelector('.div-12-max');
+const imgText = document.querySelector('.img-12-text');
 let maxImg = document.createElement('img');
 let count12 = 1;
 
-function addImages(imgNameArr) {
+function addImages(imgArr) {
 	//Добавляем мини картинки на страницу.
-	for (const aElement of imgNameArr) {
-		let img = document.createElement('img');
-		img.setAttribute('src', `img/${aElement}`);
-		img.classList.add('img-12-min');
-		div12Wrapper.append(img);
-		if (img.getAttribute('src').endsWith(imgNameArr[0])) {
-			img.classList.add('active-img');
+	for (const aElement of imgArr) {
+		for (const aElementKey in aElement) {
+			if (aElement.hasOwnProperty(aElementKey)) {
+				let img = document.createElement('img');
+				img.setAttribute('src', `img/${aElement[aElementKey]}`);
+				img.setAttribute('data-value', aElementKey);
+				img.classList.add('img-12-min');
+				div12Wrapper.append(img);
+				if (img.getAttribute('src').endsWith(aElement.Skull)) {
+					img.classList.add('active-img');
+					imgText.textContent = aElementKey;
+				}
+			}
 		}
 	}
 
 	//Добавляем большую картинку на страницу.
-	maxImg.setAttribute('src', `img/${a[0]}`);
+	maxImg.setAttribute('src', `img/${a[0].Skull}`);
 	maxImg.classList.add('img-12-max');
 	div12Max.append(maxImg);
 }
@@ -149,53 +163,79 @@ addImages(a);
 const imgMin = document.querySelectorAll('.img-12-min');
 
 function t12(e) {
-	if (count12 <= a.length && e.target.className.includes('next')) {
+	const target = e.target;
+	nextImg(target, a);
+	prevImg(target, a);
+	changeActive(a);
+	clickAndChoseImg(target, a);
+}
+
+//При нажатии на кнопку NEXT перелистывается мини-картинка на следующую.
+//Меняется большая картинка.
+function nextImg(target, imgArr) {
+	if (count12 <= imgArr.length && target.className.includes('next')) {
 		count12++;
-		if (count12 > a.length) {
+		if (count12 > imgArr.length) {
 			count12 = 1;
 		}
 		maxImg.setAttribute('src', `img/${count12}.png`);
 	}
+}
 
-	if (count12 <= a.length && e.target.className.includes('prev')) {
+//При нажатии на кнопку PREV перелистывается мини-картинка на предыдущую.
+//Меняется большая картинка.
+function prevImg(target, imgArr) {
+	if (count12 <= imgArr.length && target.className.includes('prev')) {
 		count12--;
 		if (count12 === 0) {
-			count12 = a.length;
+			count12 = imgArr.length;
 		}
 		maxImg.setAttribute('src', `img/${count12}.png`);
 	}
+}
 
-	for (const aElement of a) {
-		if (maxImg.getAttribute('src').endsWith(aElement)) {
-			for (const imgMinElement of imgMin) {
-				if (imgMinElement.getAttribute('src').endsWith(aElement)) {
-					imgMinElement.classList.add('active-img');
-				} else {
-					imgMinElement.classList.remove('active-img');
+//Добавляется класс на активную картинку, с неактивной убирается.
+function changeActive(imgArr) {
+	for (const aElement of imgArr) {
+		for (const aElementKey in aElement) {
+			if (aElement.hasOwnProperty(aElementKey)) {
+				if (maxImg.getAttribute('src').endsWith(aElement[aElementKey])) {
+					for (const imgMinElement of imgMin) {
+						if (imgMinElement.getAttribute('src').endsWith(aElement[aElementKey])) {
+							imgMinElement.classList.add('active-img');
+							imgText.textContent = aElementKey;
+						} else {
+							imgMinElement.classList.remove('active-img');
+						}
+					}
 				}
 			}
 		}
 	}
 }
 
-function t13(e) {
-	const target = e.target;
+//Все вышеперечисленные действия только при клике на картинку.
+function clickAndChoseImg(target, imgArr) {
 	if (target.matches('IMG')) {
-        for (const imgMinElement of imgMin) {
-            if (imgMinElement.classList.contains('active-img') &&
-            imgMinElement !== target) {
-                imgMinElement.classList.remove('active-img');
-                target.classList.add('active-img');
-                count12 = a.indexOf(target.getAttribute('src').replace(/img\//, '')) + 1;
-                maxImg.setAttribute('src', `img/${count12}.png`);
-            }
-        }
+		for (const imgMinElement of imgMin) {
+			if (imgMinElement.classList.contains('active-img') &&
+				imgMinElement !== target) {
+				imgMinElement.classList.remove('active-img');
+				target.classList.add('active-img');
+				// count12 = imgArr[0].indexOf(target.getAttribute('src')
+				// 	.replace(/img\//, '')) + 1;
+				// maxImg.setAttribute('src', `img/${imgArr[0][count12]}.png`);
+				for (const imgArrElement of imgArr) {
+					for (const elementKey in imgArrElement) {
+
+					}
+				}
+			}
+		}
 	}
 }
-
-//Сделать data-item. Реализовать добавление через Map или объект.
 
 // ваше событие здесь!!!
 document.querySelector('.next').addEventListener('click', t12);
 document.querySelector('.prev').addEventListener('click', t12);
-document.querySelector('.div-12-wrapper').addEventListener('click', t13);
+document.querySelector('.div-12-wrapper').addEventListener('touchstart', t12);
