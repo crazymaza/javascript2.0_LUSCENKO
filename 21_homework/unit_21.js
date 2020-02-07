@@ -167,7 +167,7 @@ function t12(e) {
 	nextImg(target, a);
 	prevImg(target, a);
 	changeActive(a);
-	clickAndChoseImg(target, a);
+	clickAndChoseImg(target);
 }
 
 //При нажатии на кнопку NEXT перелистывается мини-картинка на следующую.
@@ -215,21 +215,16 @@ function changeActive(imgArr) {
 }
 
 //Все вышеперечисленные действия только при клике на картинку.
-function clickAndChoseImg(target, imgArr) {
+function clickAndChoseImg(target) {
 	if (target.matches('IMG')) {
 		for (const imgMinElement of imgMin) {
 			if (imgMinElement.classList.contains('active-img') &&
 				imgMinElement !== target) {
 				imgMinElement.classList.remove('active-img');
 				target.classList.add('active-img');
-				// count12 = imgArr[0].indexOf(target.getAttribute('src')
-				// 	.replace(/img\//, '')) + 1;
-				// maxImg.setAttribute('src', `img/${imgArr[0][count12]}.png`);
-				for (const imgArrElement of imgArr) {
-					for (const elementKey in imgArrElement) {
-
-					}
-				}
+                count12 = target.getAttribute('src').replace(/[^0-9*]/g, ''); //Конкретно для текущего случая.
+				maxImg.setAttribute('src', `img/${count12}.png`);
+				imgText.textContent = target.getAttribute('data-value');
 			}
 		}
 	}
