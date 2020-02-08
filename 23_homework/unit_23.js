@@ -8,7 +8,8 @@ const btn1 = document.querySelector('.b-1'),
 	btn8 = document.querySelector('.b-8'),
 	btn10 = document.querySelector('.b-10'),
 	out3 = document.querySelector('.out-3'),
-	out4 = document.querySelector('.out-4');
+	out4 = document.querySelector('.out-4')
+out10 = document.querySelector('.out-10');
 
 // Task 1 ============================================
 /* Создайте функцию t1 которая записывает  в LS  ключ 5 со значением 11. Проверьте что происходит при повторном вызове функции. Запускается ф-я по кнопкуе b-1. */
@@ -119,41 +120,135 @@ const card = {
 
 function t10() {
 	localStorage.setItem('card', JSON.stringify(card));
+	t12();
 }
 
 btn10.onclick = t10;
 // Task 11 ============================================
-/*  Создайте фукнцию t11 которая читает корзину из LS и выводит на страницу в виде таблицы. Формат -  название товара - количество. Функция должна вызываться всегда после перезаписи LS ( в данном случае - просто добавьте ее вызов в нужные функции). */
+/*  Создайте фукнцию t11 которая читает корзину из LS и выводит на страницу в виде таблицы. Формат -  название товара - количество.
+ Функция должна вызываться всегда после перезаписи LS ( в данном случае - просто добавьте ее вызов в нужные функции). */
 
 function t11() {
+	const ls = JSON.parse(localStorage.getItem('card'));
+	const table = document.createElement('table');
 
+	for (const lsKey in ls) {
+		let tr = document.createElement('tr');
+		table.appendChild(tr);
+		for (let i = 0; i < 2; i++) {
+			let td = document.createElement('td');
+			if (i % 2 === 0) {
+				td.classList.add('nameContainer');
+				td.textContent = lsKey;
+			} else {
+				td.classList.add('countContainer');
+				td.innerHTML = `<p class="count">${ls[lsKey]}</p>`;
+			}
+			tr.appendChild(td);
+		}
+	}
+	out10.appendChild(table);
+	t13();
 }
 
+// btn10.onclick = t11;
 // ваше событие здесь!!!
 
 // Task 12 ============================================
-/*  Добавьте в таблицу кнопки плюс и минус возле каждого товара. При нажатии кнопки - изменяйте количество товаров в card, обновляйте LS, выводите на страницу. */
+/*  Добавьте в таблицу кнопки плюс и минус возле каждого товара.
+ При нажатии кнопки - изменяйте количество товаров в card, обновляйте LS, выводите на страницу. */
 
 function t12() {
+	t11();
+	const countContainer = document.querySelectorAll('.countContainer');
+	for (const countElement of countContainer) {
+		let plus = document.createElement('button');
+		let minus = document.createElement('button');
+		plus.textContent = '+';
+		plus.classList.add('plus');
+		minus.textContent = '-';
+		minus.classList.add('minus');
+		countElement.appendChild(plus);
+		countElement.appendChild(minus);
+	}
+	const countArr = document.querySelectorAll('.count'); //Элементы количества товара.
+	const nameArr = document.querySelectorAll('.nameContainer'); //Элементы названия товара.
 
+	addProduct(countArr, nameArr);
+	removeProduct(countArr, nameArr);
+	getTheAmount(countArr);
+}
+
+//Функция увеличивает количество продукта на странице, в объекте и в LS.
+function addProduct(countArr, nameArr) {
+	const plusArr = document.querySelectorAll('.plus');
+	plusArr.forEach(plusBtn => plusBtn.addEventListener('click', function () {
+		for (let i = 0; i < plusArr.length; i++) {
+			if (plusArr[i] === this) {
+				countArr[i].textContent = +countArr[i].textContent + 1;
+				card[nameArr[i].textContent] += 1;
+				localStorage.setItem('card', JSON.stringify(card));
+			}
+		}
+		getTheAmount(countArr);
+	}));
+}
+
+//Функция уменьшает количество продукта на странице, в объекте и LS.
+function removeProduct(countArr, nameArr) {
+	const minusArr = document.querySelectorAll('.minus');
+	minusArr.forEach(minusBtn => minusBtn.addEventListener('click', function () {
+		for (let i = 0; i < minusArr.length; i++) {
+			if (minusArr[i] === this) {
+				if (+countArr[i].textContent > 0) {
+					countArr[i].textContent = +countArr[i].textContent - 1;
+					card[nameArr[i].textContent] -= 1;
+					localStorage.setItem('card', JSON.stringify(card));
+				}
+			}
+		}
+		getTheAmount(countArr);
+	}));
+}
+
+//Функция счетает общее количество продуктов на странице.
+function getTheAmount(countArr) {
+	const sum = document.querySelector('.sum');
+	let a = 0;
+	for (const countArrElement of countArr) {
+		a += +countArrElement.textContent;
+	}
+	sum.textContent = String(a);
 }
 
 // ваше событие здесь!!!
-
 // Task 13 ============================================
 /*  Добавьте в таблицу footer который считает общее количество товара. */
 
 function t13() {
-
+	const tfoot = document.createElement('tfoot');
+	let footTr = document.createElement('tr');
+	tfoot.appendChild(footTr);
+	for (let i = 0; i < 2; i++) {
+		let td = document.createElement('td');
+		if (i % 2 === 0) {
+			td.textContent = 'Sum:';
+		} else {
+			td.classList.add('sum');
+		}
+		footTr.appendChild(td);
+	}
+	document.querySelector('table').appendChild(tfoot);
 }
 
 // ваше событие здесь!!!
 
 // Task 14 ============================================
-/*  Добавьте функцию t13, которая при загрузке страницы проверяет наличие card в LS и если есть -выводит его на страницу. Если нет - пишет корзина пуста. */
+/*  Добавьте функцию t14, которая при загрузке страницы проверяет наличие card
+в LS и если есть -выводит его на страницу. Если нет - пишет корзина пуста. */
 
-function t13() {
-
+function t14() {
+	localStorage.getItem('card');
 }
 
 // ваше событие здесь!!!
