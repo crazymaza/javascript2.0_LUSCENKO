@@ -8,8 +8,7 @@ const btn1 = document.querySelector('.b-1'),
 	btn8 = document.querySelector('.b-8'),
 	btn10 = document.querySelector('.b-10'),
 	out3 = document.querySelector('.out-3'),
-	out4 = document.querySelector('.out-4')
-out10 = document.querySelector('.out-10');
+	out4 = document.querySelector('.out-4');
 
 // Task 1 ============================================
 /* Создайте функцию t1 которая записывает  в LS  ключ 5 со значением 11. Проверьте что происходит при повторном вызове функции. Запускается ф-я по кнопкуе b-1. */
@@ -60,7 +59,10 @@ btn4.onclick = t4;
 function t5() {
 	const a4Local = JSON.parse(localStorage.getItem('a4'));
 	for (const a4LocalKey in a4Local) {
-		out4.innerHTML += `${a4LocalKey} ${a4Local[a4LocalKey]}<br>`;
+		if (a4Local.hasOwnProperty(a4LocalKey)) {
+			out4.innerHTML += `${a4LocalKey} ${a4Local[a4LocalKey]}<br>`;
+		}
+
 	}
 }
 
@@ -116,7 +118,7 @@ document.querySelector('fieldset').onchange = t9;
 const card = {
 	'apple': 3,
 	'grape': 2
-}
+};
 
 function t10() {
 	localStorage.setItem('card', JSON.stringify(card));
@@ -127,27 +129,28 @@ btn10.onclick = t10;
 // Task 11 ============================================
 /*  Создайте фукнцию t11 которая читает корзину из LS и выводит на страницу в виде таблицы. Формат -  название товара - количество.
  Функция должна вызываться всегда после перезаписи LS ( в данном случае - просто добавьте ее вызов в нужные функции). */
+const table = document.querySelector('.table');
 
 function t11() {
 	const ls = JSON.parse(localStorage.getItem('card'));
-	const table = document.createElement('table');
 
 	for (const lsKey in ls) {
-		let tr = document.createElement('tr');
-		table.appendChild(tr);
-		for (let i = 0; i < 2; i++) {
-			let td = document.createElement('td');
-			if (i % 2 === 0) {
-				td.classList.add('nameContainer');
-				td.textContent = lsKey;
-			} else {
-				td.classList.add('countContainer');
-				td.innerHTML = `<p class="count">${ls[lsKey]}</p>`;
+		if (ls.hasOwnProperty(lsKey)) {
+			let tr = document.createElement('tr');
+			for (let i = 0; i < 2; i++) {
+				let td = document.createElement('td');
+				if (i % 2 === 0) {
+					td.classList.add('nameContainer');
+					td.textContent = lsKey;
+				} else {
+					td.classList.add('countContainer');
+					td.innerHTML = `<p class="count">${ls[lsKey]}</p>`;
+				}
+				tr.appendChild(td);
 			}
-			tr.appendChild(td);
+			table.appendChild(tr);
 		}
 	}
-	out10.appendChild(table);
 	t13();
 }
 
@@ -238,7 +241,7 @@ function t13() {
 		}
 		footTr.appendChild(td);
 	}
-	document.querySelector('table').appendChild(tfoot);
+	table.appendChild(tfoot);
 }
 
 // ваше событие здесь!!!
@@ -248,7 +251,19 @@ function t13() {
 в LS и если есть -выводит его на страницу. Если нет - пишет корзина пуста. */
 
 function t14() {
-	localStorage.getItem('card');
+	if (localStorage.getItem('card') != null) {
+		btn10.setAttribute('disabled', 'true');
+		let a = JSON.parse(localStorage.getItem('card'));
+		for (const aKey in a) {
+			if (a.hasOwnProperty(aKey)) {
+				card[aKey] = a[aKey];
+			}
+		}
+		t12();
+	} else {
+		table.textContent = 'Корзина пуста';
+	}
 }
 
 // ваше событие здесь!!!
+document.addEventListener("DOMContentLoaded", t14);
