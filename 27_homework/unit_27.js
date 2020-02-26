@@ -16,9 +16,22 @@ const out1 = document.querySelector('.out-1'),
     btn8 = document.querySelector('.b-8');
 
 let sendGetRq = (params) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         fetch(`http://getpost.itgid.info/index2.php?auth=5ADcB96BA48d3f80&action=${params}`)
             .then(data => resolve(data.text()));
+    });
+};
+
+let sendPostRq = (params) => {
+    return new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `auth=5ADcB96BA48d3f80&action=${params}`
+        })
+        .then(data => resolve(data.text()));
     });
 };
 
@@ -128,11 +141,16 @@ POST запрос на сайт http://getpost.itgid.info/index2.php. В кач�
 */
 
 function t5() {
+    let first = sendPostRq('1');
+    let second = sendPostRq('2&name=Igor');
 
+    Promise.all([first, second]).then(value => {
+        out5.textContent = `${value[0]} & ${value[1]}`;
+    });
 }
 
 // ваше событие здесь!!!
-
+btn5.addEventListener('click', t5);
 // Task 6 ============================================
 /* 
  <p> Отправьте POST запрос на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 3.
@@ -149,11 +167,16 @@ function t5() {
 */
 
 function t6() {
+    let first = sendPostRq('3&num1=323&num2=234');
+    let second = sendPostRq('4&num1=322&num2=654');
 
+    Promise.all([first, second]).then(value => {
+        out6.textContent = `${value[0]} & ${value[1]}`;
+    });
 }
 
 // ваше событие здесь!!!
-
+btn6.addEventListener('click', t6);
 
 // Task 7 ============================================
 /*  
@@ -168,10 +191,16 @@ function t6() {
 */
 
 function t7() {
+    let first = sendPostRq('5');
+    let second = sendPostRq('6&num1=234&num2=34');
 
+    Promise.all([first, second]).then(value => {
+        out7.textContent = `${value[0]} & ${value[1]}`;
+    });
 }
 
 // ваше событие здесь!!!
+btn7.addEventListener('click', t7);
 
 // Task 8 ============================================
 /* 
@@ -187,7 +216,13 @@ function t7() {
 */
 
 function t8() {
+    let first = sendPostRq('7');
+    let second = sendPostRq('8&year=1989');
 
+    Promise.all([first, second]).then(value => {
+        out8.textContent = `${value[0]} & ${value[1]}`;
+    });
 }
 
 // ваше событие здесь!!!
+btn8.addEventListener('click', t8);
